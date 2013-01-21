@@ -1,8 +1,8 @@
 <?php
 /*
-* Plugin Name: SQLDump
+* Plugin Name: SQL Export
 * Plugin URI: http://vinicius.soylocoporti.org.br/sqldump-wordpress-plugin
-* Description: Dump the MySQL database.
+* Description: Export a bzipped mysqldump output from WordPress admin interface.
 * Version: 0.01
 * Author: Vinicius Massuchetto
 * Author URI: http://vinicius.soylocoporti.org.br
