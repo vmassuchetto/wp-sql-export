@@ -133,20 +133,20 @@ class SQL_Dump {
             wp_die();
 
         if ( $this->command_exists( 'bzip2' ) ) {
-            $bzip2_pipe = '| bzip2 --stdout';
-            $ext = 'bz2';
+            $compression_pipe = '| bzip2 --stdout';
+            $ext = '.sql.bz2';
         } else {
-            $bzip2_pipe = '';
-            $ext = 'sql';
+            $compression_pipe = '';
+            $ext = '.sql';
         }
 
         @ini_set( 'memory_limit', '2048M' );
         @ini_set( 'max_execution_time', 0 );
 
-        $tmpname = '/tmp/' . sha1( uniqid() ) . '.' . $ext;
-        $filename = sanitize_title( get_bloginfo( 'name' ) ) . '-' . date( 'YmdHis' ) . '.' . $ext;
+        $tmpname = '/tmp/' . sha1( uniqid() ) . $ext;
+        $filename = sanitize_title( get_bloginfo( 'name' ) ) . '-' . date( 'YmdHis' ) . $ext;
         $cmd = sprintf( "mysqldump -h'%s' -u'%s' -p'%s' %s --single-transaction %s > %s",
-            DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, $bzip2_pipe, $tmpname );
+            DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, $compression_pipe, $tmpname );
 
         exec( $cmd );
         header( 'Content-Type: application/bzip' );
