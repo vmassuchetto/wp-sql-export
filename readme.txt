@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== SQL Export ===
 Contributors: viniciusmassuchetto
 Donate link: http://vinicius.soylocoporti.org.br
 Tags: sql, import, sump
